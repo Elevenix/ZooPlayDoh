@@ -343,6 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 139618185}
+  - component: {fileID: 139618186}
   m_Layer: 5
   m_Name: TimelapseWindow
   m_TagString: Untagged
@@ -363,11 +364,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1140087304}
-  - {fileID: 1057706069}
   - {fileID: 703097352}
   - {fileID: 928898885}
   - {fileID: 502885473}
   - {fileID: 1725963082}
+  - {fileID: 1057706069}
   m_Father: {fileID: 1193140254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -375,6 +376,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &139618186
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139618184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5338d0d5f34d5fb42826a363bc099136, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &144853170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,13 +1237,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1782683539}
+  - {fileID: 275720851}
+  - {fileID: 687659630}
   - {fileID: 2094681927}
   - {fileID: 1193140254}
   - {fileID: 549262674}
   - {fileID: 144853171}
-  - {fileID: 687659630}
-  - {fileID: 275720851}
-  - {fileID: 1782683539}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1265,6 +1287,7 @@ MonoBehaviour:
   switchScreen: {fileID: 353459759}
   frameBySeconds: 0.5
   animPhotoAdded: {fileID: 144853174}
+  timeLapseAnimator: {fileID: 139618186}
 --- !u!114 &353459759
 MonoBehaviour:
   m_ObjectHideFlags: 0

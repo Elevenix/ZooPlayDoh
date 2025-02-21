@@ -16,6 +16,7 @@ public class Timelapse : MonoBehaviour
     [Header("Timelapse Info"), Space(6)]
     [SerializeField] private float frameBySeconds = .5f;
     [SerializeField] private Animator animPhotoAdded;
+    [SerializeField] private Animator timeLapseAnimator;
 
     private List<Sprite> _sprites = new List<Sprite>();
     private int _indexSprite = 0;
@@ -25,6 +26,11 @@ public class Timelapse : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeScreenAddInTimelapse();
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            FullscreenTimelapseWindow(!timeLapseAnimator.GetBool("Fullscreen"));
         }
     }
 
@@ -89,6 +95,12 @@ public class Timelapse : MonoBehaviour
 
         // Créer un Sprite et l'afficher dans l'UI
         return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+    }
+
+    private void FullscreenTimelapseWindow(bool value)
+    {
+        switchScreen.OpenTimelapseWindow(true);
+        timeLapseAnimator.SetBool("Fullscreen", value);
     }
 
     private IEnumerator LoopTimelapseCoroutine()

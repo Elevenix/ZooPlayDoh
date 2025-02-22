@@ -30,6 +30,19 @@ public class WebcamCaptureZoo : MonoBehaviour
         SwitchWebcam();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CapturePhoto();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            CreateNewPlayer();
+        }
+    }
+
     public void CapturePhoto()
     {
         string namePhoto = captureNameFile.text.Replace(" ", "");

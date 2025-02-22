@@ -16,13 +16,12 @@ public class WebcamCapturePhoto : MonoBehaviour
 
     private WebCamTexture webcamTexture;
     private string _filePath = "";
+    private int webcamIndex = 0;
 
     void Start()
     {
         // Démarrer la webcam
-        webcamTexture = new WebCamTexture();
-        display.texture = webcamTexture;
-        webcamTexture.Play();
+        SwitchWebcam();
     }
 
     public void CapturePhoto()
@@ -67,6 +66,25 @@ public class WebcamCapturePhoto : MonoBehaviour
             File.Delete(_filePath);
             capturedImageDisplay.sprite = null;
         }
+    }
+
+    public void SwitchWebcam()
+    {
+        if(webcamTexture != null)
+        {
+            webcamTexture.Stop();
+        }
+
+        WebCamDevice[] devices = WebCamTexture.devices;
+
+        string selectedWebcam = devices[webcamIndex% devices.Length].name;
+        print("Utilisation de la webcam : " + selectedWebcam);
+
+        webcamTexture = new WebCamTexture(selectedWebcam);
+        display.texture = webcamTexture;
+        webcamTexture.Play();
+
+        webcamIndex++;
     }
 
     public void OpenFileExplorerCaptures()

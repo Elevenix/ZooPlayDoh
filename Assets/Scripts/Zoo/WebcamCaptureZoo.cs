@@ -20,15 +20,14 @@ public class WebcamCaptureZoo : MonoBehaviour
 
     private WebCamTexture webcamTexture;
     private Sprite _actualSprite;
+    private int webcamIndex = 0;
 
     void Start()
     {
         OpenPhotoMenu(false);
 
         // Démarrer la webcam
-        webcamTexture = new WebCamTexture();
-        display.texture = webcamTexture;
-        webcamTexture.Play();
+        SwitchWebcam();
     }
 
     public void CapturePhoto()
@@ -68,7 +67,7 @@ public class WebcamCaptureZoo : MonoBehaviour
         {
             string sizeStr = captureSize.text.Replace(".", ",");
             float size = float.Parse(sizeStr);
-            zoo.AddPlayer(captureNameFile.text, _actualSprite, size);
+            zoo.AddPlayer(captureNameFile.text, _actualSprite, size, false);
             // reset buttons
             capturedImageDisplay.sprite = null;
             _actualSprite = null;
@@ -100,6 +99,25 @@ public class WebcamCaptureZoo : MonoBehaviour
     {
         TakePhotoWindow.SetActive(value);
         buttonOpenPhotoWindow.SetActive(!value);
+    }
+
+    public void SwitchWebcam()
+    {
+        if (webcamTexture != null)
+        {
+            webcamTexture.Stop();
+        }
+
+        WebCamDevice[] devices = WebCamTexture.devices;
+
+        string selectedWebcam = devices[webcamIndex % devices.Length].name;
+        print("Utilisation de la webcam : " + selectedWebcam);
+
+        webcamTexture = new WebCamTexture(selectedWebcam);
+        display.texture = webcamTexture;
+        webcamTexture.Play();
+
+        webcamIndex++;
     }
 
     private System.Collections.IEnumerator LoadAndSetSprite(string filePath)

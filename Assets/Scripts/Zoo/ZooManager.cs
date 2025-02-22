@@ -11,7 +11,7 @@ public class ZooManager : MonoBehaviour
 
     public void AddPlayer(string name,Sprite sprite, float size, bool randomSpawn = true)
     {
-        Vector2 pos = transform.position;
+        Vector2 pos = Vector2.zero;
 
         if (randomSpawn)
         {
@@ -23,6 +23,7 @@ public class ZooManager : MonoBehaviour
         Player newPlayer = Instantiate(prefabPlayer, pos, Quaternion.identity);
         newPlayer.CreatePlayer(name, sprite);
         newPlayer.gameObject.transform.localScale = Vector3.one * size;
+        newPlayer.GetSizeArea(sizeRandomSpawn);
         _players.Add(newPlayer);
     }
 

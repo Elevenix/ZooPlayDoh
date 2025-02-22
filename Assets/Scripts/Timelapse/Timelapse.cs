@@ -28,7 +28,7 @@ public class Timelapse : MonoBehaviour
             TakeScreenAddInTimelapse();
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftControl))
         {
             FullscreenTimelapseWindow(!timeLapseAnimator.GetBool("Fullscreen"));
         }
